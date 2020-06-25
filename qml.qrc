@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/background.jpg</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>EditorPage.qml</file>
+        <file>main.qml</file>
+        <file>TestPage.qml</file>
+        <file>images/background2.jpg</file>
+        <file>images/Background3.jpg</file>
+        <file>EnterPage.qml</file>
+        <file>MainMenuPage.qml</file>
+        <file>RegPage.qml</file>
+        <file>images/photo3.png</file>
+        <file>EditorWordsPage.qml</file>
+        <file>images/search.png</file>
+        <file>fonts/elusiveicons-webfont.ttf</file>
+        <file>fonts/19180.otf</file>
+        <file>stylesApp/YesOrNoButton.qml</file>
+        <file>stylesApp/ContainerDelegate.qml</file>
+        <file>delegates/Delegates_fc.qml</file>
+        <file>delegates/Delegate_fm.qml</file>
+        <file>stylesApp/SpecialButton.qml</file>
+    </qresource>
+</RCC>
