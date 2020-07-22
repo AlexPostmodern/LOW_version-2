@@ -12,20 +12,24 @@
 #include <QSqlField>
 #include <QSqlRecord>
 
+enum class transactions
+{OPEN, COMMIT, ROLLBACK};
+
 class Database :public QObject
 {
     Q_OBJECT
 
 public:
+    explicit Database():tableName("Words"){}
     explicit Database(QString tableName);
     explicit Database(QString tableName, QString strquery);
     Database(const Database& other);
-    //Database operator=(const Database& other);
+    Database& operator=(const Database& other);
 
     Q_INVOKABLE static QVariant query_returnValue(QString strquery);
     Q_INVOKABLE static QSqlQuery query_return(QString strquery);
     Q_INVOKABLE static bool query_exec(QString strquery);
-    Q_INVOKABLE static void transaction(QString open_commit_rollback);
+    Q_INVOKABLE static void transaction(transactions value);
     static bool db_createConnection(QString path);
 
 public slots:

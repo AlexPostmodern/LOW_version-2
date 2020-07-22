@@ -12,6 +12,7 @@ Item
     Row
     {
         spacing: 50
+
         Column
         {
             spacing: 10

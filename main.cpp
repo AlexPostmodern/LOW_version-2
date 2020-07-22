@@ -7,10 +7,9 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
     QGuiApplication app(argc, argv);
     Database::db_createConnection(QDir::currentPath()+"/source/LOW.db");
-    Database db(nullptr);
+    Database db;
     QQmlApplicationEngine engine;
     AppCore appcore;
     QQmlContext *contex=engine.rootContext();

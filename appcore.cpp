@@ -4,15 +4,9 @@ QString AppCore::loginUser;
 QString AppCore::passUser;
 QString AppCore::nameUser;
 
-AppCore::AppCore(QObject *parent) : QObject(parent)
-{
+AppCore::AppCore(QObject *parent) : QObject(parent){}
 
-}
-
-AppCore::~AppCore()
-{
-
-}
+AppCore::~AppCore(){}
 
 //ВХОД В ПРОГРАММУ
 int AppCore::ac_enterInProgram(QString login, QString pass, bool checkState)
@@ -368,7 +362,7 @@ void AppCore::ap_test_irrVerbs()
     QString firstStr;
     bool list1=false,list2=false;
     QStringList listStr, listStr2;
-    Database::transaction("open");
+    Database::transaction(transactions::OPEN);
     for (int i=1;i<295;i++)
     {
         second=4;
@@ -413,7 +407,7 @@ void AppCore::ap_test_irrVerbs()
         }
         list.clear();
     }
-    Database::transaction("commit");
+    Database::transaction(transactions::COMMIT);
     books->dynamicCall("Close");
     delete range; delete sheetTemp; delete sheets;
     delete bookTemp; delete books; delete excel;

@@ -2,28 +2,32 @@
 
 QSqlDatabase Database::db;
 
-Database::Database(const QString tableName)
+Database::Database(QString tableName):tableName(tableName),
+    strQuery("select * from "+tableName)
 {
-    this->tableName=tableName;
-    strQuery="select * from "+tableName;
     query.exec(strQuery);
     record=query.record();
 }
 
 Database::Database(QString tableName, QString strquery)
+    :tableName(tableName), strQuery(strquery)
 {
-    this->tableName=tableName;
-    strQuery=strquery;
     query.exec(strQuery);
     record=query.record();
 }
 
 Database::Database(const Database &other)
+    :tableName(other.tableName), strQuery(other.strQuery),
+      query(other.query), record(other.record) {}
+
+Database &Database::operator=(const Database &other)
 {
+    if(this==&other) return *this;
     this->tableName=other.tableName;
     this->strQuery=other.strQuery;
     this->query=other.query;
     this->record=other.record;
+    return *this;
 }
 
 bool Database::db_createConnection(QString path)
@@ -198,14 +202,20 @@ bool Database::query_exec(QString strquery)
         return false;
 }
 
-void Database::transaction(QString open_commit_rollback)
+void Database::transaction(transactions value)
 {
-    if (open_commit_rollback=="open")
-        db.transaction();
-    if(open_commit_rollback=="commit")
-        db.commit();
-    if(open_commit_rollback=="rollback")
-        db.rollback();
+    switch (value)
+    {
+        case transactions::OPEN:
+            db.transaction();
+            break;
+        case transactions::COMMIT:
+            db.commit();
+            break;
+        case transactions::ROLLBACK:
+            db.rollback();
+            break;
+    }
 }
 
 
