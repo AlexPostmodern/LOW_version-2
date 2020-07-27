@@ -1,3 +1,3 @@
 # LOW_version-2
 An app for learning English, in progress...
-## Uprade LOW_version-1 with using QML
+## Upgrading LOW_version-1 with using QML
